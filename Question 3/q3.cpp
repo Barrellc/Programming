@@ -45,12 +45,11 @@ int main () {
 
   }
 
-
-if(Dist[0] < 0 || Dist[1] < 0 || Dist[2] < 0) {
-  std::cout << "error";
+  if (Dist[0] < 0 || Dist[1] < 0 || Dist [2] < 0 || Dist[3] < 0 || Dist[4] < 0 || Dist [5] < 0 || Dist[6] < 0 || Dist[7] < 0 || Dist [8] < 0){
+    std::cout << "\nPlease enter positive distances!\n";
 }
+else {
 
-else{
 
 //Table showing distances for each disipline and total distance for each race.
 std::cout << "\nRace\t|Swimming disatance\t|Cycling distance\t|Running Distance\t|Total Distance\n";
@@ -177,51 +176,25 @@ for (int i = 0; i < 15; i++) {
     technical_clothing_time[i] = (technical_clothing_swim[i] + technical_clothing_cycling[i] + technical_clothing_run[i]);
 }
 
-// caluating the combinations
 float combinations[18];
-//Cycling Shoes and Goggles
-combinations[0] = ((technical_clothing_time[0] + technical_clothing_time[3]) / 2);
-//Cycling Shoes and Sunglasses
-combinations[1] = ((technical_clothing_time[0] + technical_clothing_time[4]) / 2);
-//Running Shoes and Goggles
-combinations[2] = ((technical_clothing_time[1] + technical_clothing_time[3]) / 2);
-//Running Shoes and Sunglasses
-combinations[3] = ((technical_clothing_time[1] + technical_clothing_time[4]) / 2);
-//Flippers and Goggles
-combinations[4] = ((technical_clothing_time[2] + technical_clothing_time[3]) / 2);
-//Flippers and Sunglasses
-combinations[5] = ((technical_clothing_time[2] + technical_clothing_time[4]) / 2);
+int n = 0;
+int tct = 3;
 
-// Second Race
+for (int i = 0; i < 18; i++){
 
-combinations[6] = ((technical_clothing_time[5] + technical_clothing_time[8]) / 2);
-//Cycling Shoes and Sunglasses
-combinations[7] = ((technical_clothing_time[5] + technical_clothing_time[9]) / 2);
-//Running Shoes and Goggles
-combinations[8] = ((technical_clothing_time[6] + technical_clothing_time[8]) / 2);
-//Running Shoes and Sunglasses
-combinations[9] = ((technical_clothing_time[6] + technical_clothing_time[9]) / 2);
-//Flippers and Goggles
-combinations[10] = ((technical_clothing_time[7] + technical_clothing_time[8]) / 2);
-//Flippers and Sunglasses
-combinations[11] = ((technical_clothing_time[7] + technical_clothing_time[9]) / 2);
-
-//Third Race
-
-combinations[12] = ((technical_clothing_time[10] + technical_clothing_time[13]) / 2);
-//Cycling Shoes and Sunglasses
-combinations[13] = ((technical_clothing_time[10] + technical_clothing_time[14]) / 2);
-//Running Shoes and Goggles
-combinations[14] = ((technical_clothing_time[11] + technical_clothing_time[13]) / 2);
-//Running Shoes and Sunglasses
-combinations[15] = ((technical_clothing_time[11] + technical_clothing_time[14]) / 2);
-//Flippers and Goggles
-combinations[16] = ((technical_clothing_time[12] + technical_clothing_time[13]) / 2);
-//Flippers and Sunglasses
-combinations[17] = ((technical_clothing_time[12] + technical_clothing_time[14]) / 2);
-
-
-char Equipment[6][15] = {"Cycling Shoes", "Goggles", "Sunglasses", "Running Shoes", "Flippers"};
+  if (i % 2 == 0){
+tct = 3;
+if (i > 0){
+  n = n + 1;
+}}
+  else {
+tct = 4;
+}
+if (i > 0 && i % 6 == 0){
+n = n + 2;
+}
+combinations[i] = ((technical_clothing_time[n] + technical_clothing_time[tct]) / 2);
+}
 
 //Tables showing the time taken for each combination to complete each race, given the distance inputted.
 
@@ -260,5 +233,4 @@ if (combinations[i+5] < combinations[i] && combinations[i+5] < combinations[i+1]
   std::cout << "For the " << race[n] <<" race the use of flippers and sunglasses are the best combination of clothing items as they allow Johnny Redknees to complete the race the fastest possible time; being: "<< combinations[i+4] << " hours.\n\n";
 }
 n = n + 1;
-}}
-}
+}}}
